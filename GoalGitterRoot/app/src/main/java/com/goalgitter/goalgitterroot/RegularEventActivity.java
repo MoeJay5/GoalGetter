@@ -21,9 +21,9 @@ public class RegularEventActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_regular_event);
+        setContentView(R.layout.activity_regular_goal);
 
-        userText = (EditText) findViewById(R.id.regularUserText);
+        userText = (EditText) findViewById(R.id.financialUserText);
         temp = "temp"; //temp
 
         final ImageButton addGoalRegularBtn = (ImageButton) findViewById(R.id.addGoalRegularButton);

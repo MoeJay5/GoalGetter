@@ -60,7 +60,7 @@
         android:layout_marginTop="76dp"
         android:text="Change Profile Name:"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        app:layout_constraintBottom_toBottomOf="@+id/regularUserText"
+        app:layout_constraintBottom_toBottomOf="@+id/financialUserText"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileEditTitle"
         app:layout_constraintVertical_bias="0.521" />
