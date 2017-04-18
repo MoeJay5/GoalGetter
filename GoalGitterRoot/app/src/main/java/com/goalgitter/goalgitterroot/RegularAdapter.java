@@ -2,6 +2,7 @@ package com.goalgitter.goalgitterroot;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Debug;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 /**
@@ -41,7 +43,7 @@ public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularH
 
         @Override
         public void onBindViewHolder(RegularAdapter.RegularHolder holder, final int position){
-          RegularEvent  regularsomething = regularevent.get(position);
+            RegularEvent  regularsomething = regularevent.get(position);
 
             holder.getTextView().setText(regularsomething.getRegularGoal());
             holder.getButtonDone().setOnClickListener(new View.OnClickListener() {
@@ -54,9 +56,11 @@ public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularH
             holder.getButtonUpdate().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Intent intent = new Intent(this , RegularEventActivity.class);
-                    //startActivity(intent);
-                    notifyItemChanged(position);
+                    RegularEventActivity.editMode = true;
+                    RegularEventActivity.regularPosition = position;
+                    Intent intent = new Intent(context , RegularEventActivity.class);
+                    context.startActivity(intent);
+                    //notifyItemChanged(position);
                 }
             });
         }

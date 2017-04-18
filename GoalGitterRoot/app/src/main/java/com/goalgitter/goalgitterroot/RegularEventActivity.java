@@ -15,7 +15,8 @@ public class RegularEventActivity extends AppCompatActivity {
 
     ArrayList<RegularEvent> regularEventList = new ArrayList<>();
     EditText userText;
-    String temp; //temp
+    public static Boolean editMode = false;
+    public static int regularPosition = 0;
 
 
     @Override
@@ -24,22 +25,32 @@ public class RegularEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_regular_goal);
 
         userText = (EditText) findViewById(R.id.regularUserText);
-        temp = "temp"; //temp
 
         final ImageButton addGoalRegularBtn = (ImageButton) findViewById(R.id.addGoalRegularButton);
 
         addGoalRegularBtn.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
+                        RegularEvent regularEventObj = new RegularEvent(userText.getText().toString(), "pass");
+                        if(editMode == false) {
+                            regularEventList.add(regularEventObj);
+                            list_something.add(regularEventObj);
+                            MainActivity.setEvents(regularEventList);
 
-                        RegularEvent regularEventObj = new RegularEvent(userText.getText().toString(), temp);
-                        regularEventList.add(regularEventObj);
-                        list_something.add(regularEventObj);
-                        MainActivity.setEvents(regularEventList);
-
-                        Toast.makeText(getApplicationContext(),
-                                "Regular Goal created", Toast.LENGTH_LONG).show();
-
+                            Toast.makeText(getApplicationContext(),
+                                    "Regular Goal created", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            editMode = false;
+                            regularEventList.add(regularEventObj);
+                            list_something.add(regularEventObj);
+                            MainActivity.setEvents(regularEventList);
+//                            regularEventList.set(regularPosition, regularEventObj);// error here
+//                            list_something.set(regularPosition, regularEventObj);
+                            //MainActivity.setEvents(regularEventList);
+                            Toast.makeText(getApplicationContext(),
+                                    "Regular Goal edited", Toast.LENGTH_LONG).show();
+                        }
                         Intent intent = new Intent(RegularEventActivity.this, MainActivity.class);
                         startActivity(intent);
                     }
