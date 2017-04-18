@@ -8,12 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
+import static com.goalgitter.goalgitterroot.MainActivity.*;
 import java.util.ArrayList;
 
 public class RegularEventActivity extends AppCompatActivity {
 
-    public static ArrayList<RegularEvent> regularEventList = new ArrayList<>();
+    ArrayList<RegularEvent> regularEventList = new ArrayList<>();
     EditText userText;
     String temp; //temp
 
@@ -23,7 +23,7 @@ public class RegularEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regular_goal);
 
-        userText = (EditText) findViewById(R.id.financialUserText);
+        userText = (EditText) findViewById(R.id.regularUserText);
         temp = "temp"; //temp
 
         final ImageButton addGoalRegularBtn = (ImageButton) findViewById(R.id.addGoalRegularButton);
@@ -34,11 +34,13 @@ public class RegularEventActivity extends AppCompatActivity {
 
                         RegularEvent regularEventObj = new RegularEvent(userText.getText().toString(), temp);
                         regularEventList.add(regularEventObj);
+                        list_something.add(regularEventObj);
+                        MainActivity.setEvents(regularEventList);
 
                         Toast.makeText(getApplicationContext(),
                                 "Regular Goal created", Toast.LENGTH_LONG).show();
 
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(RegularEventActivity.this, MainActivity.class);
                         startActivity(intent);
                     }
                 }

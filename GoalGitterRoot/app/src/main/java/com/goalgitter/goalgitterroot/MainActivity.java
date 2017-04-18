@@ -8,8 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button financialBtn;
     RecyclerView mainRecyclerView;
     String[] temp = new String[1];
+    static ArrayList<RegularEvent> list_something = new ArrayList<>();
 
 
     @Override
@@ -34,14 +35,17 @@ public class MainActivity extends AppCompatActivity {
 
         temp[0] = "First";
         state = false;
+//        RegularEvent lol = new RegularEvent("Hey Moe","Hey");
+//        list_something.add(lol);
         addGoalBtn = (ImageButton) findViewById(R.id.addGoalButton);
         regularBtn = (Button) findViewById(R.id.regularButton);
         eventBtn = (Button) findViewById(R.id.eventButton);
         financialBtn = (Button) findViewById(R.id.financialButton);
-        mainRecyclerView = (RecyclerView) findViewById(R.id.goalList);
+        mainRecyclerView = (RecyclerView) findViewById(R.id.regularGoalList);
         mainRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RegularAdapter regularAdapter = new RegularAdapter(this,list_something);
         //mainRecyclerView.setAdapter(new Adapter(this,RegularEventActivity.regularEventList.get(0).getRegularGoal()));
-        mainRecyclerView.setAdapter(new Adapter(this,temp));//temp
+        mainRecyclerView.setAdapter(regularAdapter);//temp
 
         addGoalBtn.setOnClickListener(
                 new Button.OnClickListener() {
@@ -71,5 +75,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+    public static ArrayList<RegularEvent> setEvents(ArrayList<RegularEvent> list){
+        list  = list_something;
+        return list;
     }
 }

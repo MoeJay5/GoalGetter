@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewRegularRow"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/regularDone"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="7dp"
+            android:text="Done"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/regularEdit"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="0dp"
+            android:text="Edit"
+            app:layout_constraintBottom_toBottomOf="@+id/regularDone"
+            app:layout_constraintRight_toLeftOf="@+id/regularDone"
+            app:layout_constraintTop_toTopOf="@+id/regularDone" />
+
+        <TextView
+            android:id="@+id/tv_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="140dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/regularEdit"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6" />
+    </android.support.constraint.ConstraintLayout>
+
 </LinearLayout>
