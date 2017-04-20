@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
     }
-    public static ArrayList<RegularEvent> setEvents(ArrayList<RegularEvent> list){
-        list  = list_something;
-        return list;
-    }
+//    public static ArrayList<RegularEvent> setEvents(ArrayList<RegularEvent> list){ //Not Needed?
+//        list  = list_something;
+//        return list;
+//    }
 }

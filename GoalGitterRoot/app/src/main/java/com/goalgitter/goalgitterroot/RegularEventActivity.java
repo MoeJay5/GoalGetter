@@ -33,21 +33,17 @@ public class RegularEventActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         RegularEvent regularEventObj = new RegularEvent(userText.getText().toString(), "pass");
                         if(editMode == false) {
-                            regularEventList.add(regularEventObj);
                             list_something.add(regularEventObj);
-                            MainActivity.setEvents(regularEventList);
+                            //regularEventList.add(regularEventObj); //Not Needed?
+                            //MainActivity.setEvents(regularEventList); //Not Needed?
 
                             Toast.makeText(getApplicationContext(),
                                     "Regular Goal created", Toast.LENGTH_LONG).show();
                         }
                         else {
                             editMode = false;
-                            regularEventList.add(regularEventObj);
-                            list_something.add(regularEventObj);
-                            MainActivity.setEvents(regularEventList);
-//                            regularEventList.set(regularPosition, regularEventObj);// error here
-//                            list_something.set(regularPosition, regularEventObj);
-                            //MainActivity.setEvents(regularEventList);
+                            list_something.set(regularPosition, regularEventObj);
+                            //MainActivity.setEvents(regularEventList); //Not Needed?
                             Toast.makeText(getApplicationContext(),
                                     "Regular Goal edited", Toast.LENGTH_LONG).show();
                         }

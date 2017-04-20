@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Debug;
 import android.support.v7.widget.RecyclerView;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,23 +45,25 @@ public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularH
         @Override
         public void onBindViewHolder(RegularAdapter.RegularHolder holder, final int position){
             RegularEvent  regularsomething = regularevent.get(position);
+            RegularEventActivity.regularPosition = position;
 
             holder.getTextView().setText(regularsomething.getRegularGoal());
+            holder.getTextView().setMovementMethod(new ScrollingMovementMethod());
             holder.getButtonDone().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     regularevent.remove(position);
-                    notifyItemRemoved(position);
+                    notifyDataSetChanged();
                 }
             });
             holder.getButtonUpdate().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     RegularEventActivity.editMode = true;
-                    RegularEventActivity.regularPosition = position;
                     Intent intent = new Intent(context , RegularEventActivity.class);
-                    context.startActivity(intent);
+                    notifyDataSetChanged();
                     //notifyItemChanged(position);
+                    context.startActivity(intent);
                 }
             });
         }
