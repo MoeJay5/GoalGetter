@@ -17,9 +17,17 @@ public class RegularEvent {
         return regularGoal;
     }
 
-    public String getRegularNotificationFreq(){
+    public String getRegularNotifFreq(){
         return regularNotificationFreq;
     }
-    //incase no input if == empty make button invisible.
+
+    public int getRegularNotifPos() {
+        if (regularNotificationFreq == "Weekly")
+            return 1;
+        else if (regularNotificationFreq == "Monthly")
+            return 2;
+        else return 0;
+    }
+
 
 }

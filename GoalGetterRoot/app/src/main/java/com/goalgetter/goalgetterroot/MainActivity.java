@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     Button eventBtn;
     Button financialBtn;
     RecyclerView mainRecyclerView;
-    String[] temp = new String[1];
     static ArrayList<RegularEvent> list_something = new ArrayList<>();
 
 
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         // Get the reference of ListViewAnimals
         //ListView goalListView = (ListView)findViewById(R.id.goalList);
 
-        temp[0] = "First";
         state = false;
 //        RegularEvent lol = new RegularEvent("Hey Moe","Hey");
 //        list_something.add(lol);
