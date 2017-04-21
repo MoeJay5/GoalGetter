@@ -1,8 +1,7 @@
-package com.goalgitter.goalgitterroot;
+package com.goalgetter.goalgetterroot;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Debug;
 import android.support.v7.widget.RecyclerView;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -10,9 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.Console;
 import java.util.ArrayList;
 
 /**

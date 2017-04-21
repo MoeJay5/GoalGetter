@@ -1,14 +1,13 @@
-package com.goalgitter.goalgitterroot;
+package com.goalgetter.goalgetterroot;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         RegularAdapter regularAdapter = new RegularAdapter(this,list_something);
         //mainRecyclerView.setAdapter(new Adapter(this,RegularEventActivity.regularEventList.get(0).getRegularGoal()));
-        mainRecyclerView.setAdapter(regularAdapter);//temp
+        mainRecyclerView.setAdapter(regularAdapter);
 
         addGoalBtn.setOnClickListener(
                 new Button.OnClickListener() {

@@ -1,4 +1,4 @@
-package com.goalgitter.goalgitterroot;
+package com.goalgetter.goalgetterroot;
 
 /**
  * Created by moeja on 4/8/2017.
