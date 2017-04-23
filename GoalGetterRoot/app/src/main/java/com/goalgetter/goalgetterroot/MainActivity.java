@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         regularBtn.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(), RegularEventActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), RegularActivity.class);
                         startActivity(intent);
                     }
                 }

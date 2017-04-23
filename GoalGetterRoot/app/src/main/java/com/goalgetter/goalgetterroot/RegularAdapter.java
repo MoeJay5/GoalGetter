@@ -42,7 +42,7 @@ public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularH
         @Override
         public void onBindViewHolder(RegularAdapter.RegularHolder holder, final int position){
             RegularEvent regularAdapt = regularevent.get(position);
-            RegularEventActivity.regularPosition = position;
+            RegularActivity.regularPosition = position;
 
             holder.getTextView().setText(regularAdapt.getRegularGoal());
             holder.getTextView().setMovementMethod(new ScrollingMovementMethod());
@@ -56,8 +56,8 @@ public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularH
             holder.getButtonUpdate().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    RegularEventActivity.editMode = true;
-                    Intent intent = new Intent(context , RegularEventActivity.class);
+                    RegularActivity.editMode = true;
+                    Intent intent = new Intent(context , RegularActivity.class);
                     notifyDataSetChanged();
                     context.startActivity(intent);
                 }

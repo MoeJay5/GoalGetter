@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import static com.goalgetter.goalgetterroot.MainActivity.list_something;
 
-public class RegularEventActivity extends AppCompatActivity {
+public class RegularActivity extends AppCompatActivity {
 
     //ArrayList<RegularEvent> regularEventList = new ArrayList<>();
     EditText regularUserText;
@@ -83,7 +83,7 @@ public class RegularEventActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),
                                     "Regular Goal edited", Toast.LENGTH_LONG).show();
                         }
-                        Intent intent = new Intent(RegularEventActivity.this, MainActivity.class);
+                        Intent intent = new Intent(RegularActivity.this, MainActivity.class);
                         startActivity(intent);
                     }
                 }
