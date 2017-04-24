@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import static com.goalgetter.goalgetterroot.MainActivity.list_something;
+import static com.goalgetter.goalgetterroot.MainActivity.regularList;
 
 public class RegularActivity extends AppCompatActivity {
 
@@ -40,8 +40,8 @@ public class RegularActivity extends AppCompatActivity {
         final ImageButton addGoalRegularBtn = (ImageButton) findViewById(R.id.addGoalRegularButton);
 
         if(editMode == true) { //Sets text and spinner to the what is being edited.
-            regularUserText.setText(list_something.get(regularPosition).getRegularGoal());
-            regularSpinner.setSelection(list_something.get(regularPosition).getRegularNotifPos());
+            regularUserText.setText(regularList.get(regularPosition).getRegularGoal());
+            regularSpinner.setSelection(regularList.get(regularPosition).getRegularNotifPos());
         }
         else addGoalRegularBtn.setVisibility(View.INVISIBLE);// Set Invisible if user not editing
 
@@ -69,7 +69,7 @@ public class RegularActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         RegularEvent regularEventObj = new RegularEvent(regularUserText.getText().toString(), regularSpinner.getSelectedItem().toString());
                         if(editMode == false) {
-                            list_something.add(regularEventObj);
+                            regularList.add(regularEventObj);
                             //regularEventList.add(regularEventObj); //Not Needed?
                             //MainActivity.setEvents(regularEventList); //Not Needed?
 
@@ -78,12 +78,12 @@ public class RegularActivity extends AppCompatActivity {
                         }
                         else {
                             editMode = false;
-                            list_something.set(regularPosition, regularEventObj);
+                            regularList.set(regularPosition, regularEventObj);
                             //MainActivity.setEvents(regularEventList); //Not Needed?
                             Toast.makeText(getApplicationContext(),
                                     "Regular Goal edited", Toast.LENGTH_LONG).show();
                         }
-                        Intent intent = new Intent(RegularActivity.this, MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                     }
                 }

@@ -19,6 +19,7 @@
         <activity android:name=".ProfileEvent"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".RegularActivity"></activity>
+        <activity android:name=".FinancialActivity"></activity>
     </application>
 
 </manifest>

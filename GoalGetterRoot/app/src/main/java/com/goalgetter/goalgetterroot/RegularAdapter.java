@@ -50,6 +50,8 @@ public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularH
                 @Override
                 public void onClick(View v) {
                     regularevent.remove(position);
+                    if (MainActivity.regularList.size() <= 0)
+                        MainActivity.regularTitle.setVisibility(View.INVISIBLE);
                     notifyDataSetChanged();
                 }
             });
