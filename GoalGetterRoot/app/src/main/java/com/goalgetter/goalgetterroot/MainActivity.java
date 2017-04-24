@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
     }
+
 //    public static ArrayList<RegularEvent> setEvents(ArrayList<RegularEvent> list){ //Not Needed?
 //        list  = regularList;
 //        return list;

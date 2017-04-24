@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="30dp"
+    android:layout_height="25dp"
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
@@ -22,7 +22,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.285" />
+            app:layout_constraintVertical_bias="0.45" />
 
         <Button
             android:id="@+id/regularEdit"
@@ -42,7 +42,7 @@
         <TextView
             android:id="@+id/tv_regular"
             android:layout_width="0dp"
-            android:layout_height="17dp"
+            android:layout_height="20dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="8dp"
             android:fadeScrollbars="true"
@@ -55,7 +55,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/regularEdit"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintVertical_bias="0.65999997"
+            android:layout_marginTop="2dp" />
     </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

@@ -47,7 +47,6 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.Fina
         @Override
         public void onBindViewHolder(FinancialAdapter.FinancialHolder holder, final int position){
             FinancialEvent financialAdapt = financialevent.get(position);
-            FinancialActivity.financialPosition = position;
 
             financialGoal = Double.parseDouble(financialAdapt.getFinancialGoal());
             if(financialAdapt.getFinancialCurrentGoal().length() > 0 && Double.parseDouble(financialAdapt.getFinancialCurrentGoal()) > 0)
@@ -56,7 +55,7 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.Fina
                 financialCurrentGoal = 0;
             financialRemaining = financialGoal - financialCurrentGoal;
 
-            holder.getTextView().setText("Current: $" + financialCurrentGoal + ", Goal: $" + financialGoal + ", Remaining: $" + financialRemaining);
+            holder.getTextView().setText("Current: $" + castToInt(financialCurrentGoal) + ", Goal: $" + castToInt(financialGoal) + ", Remaining: $" + castToInt(financialRemaining));
             holder.getTextView().setMovementMethod(new ScrollingMovementMethod());
             holder.getButtonDone().setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -71,6 +70,7 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.Fina
                 @Override
                 public void onClick(View v) {
                     FinancialActivity.editMode = true;
+                    FinancialActivity.financialPosition = position;
                     Intent intent = new Intent(context , FinancialActivity.class);
                     notifyDataSetChanged();
                     context.startActivity(intent);
@@ -113,5 +113,12 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.Fina
             public Button getButtonUpdate() {
                 return buttonEdit;
             }
-}
+    }
+
+    private Object castToInt(double value) {
+        if ((value - (int) value) == 0)
+            return (int) value;
+        else
+            return value;
+    }
 }
