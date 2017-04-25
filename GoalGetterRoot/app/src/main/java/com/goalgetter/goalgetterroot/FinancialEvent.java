@@ -28,10 +28,12 @@ public class FinancialEvent {
     }
 
     public int getFinancialNotifPos() {
-        if (financialNotificationFreq == "Weekly")
+        if (financialNotificationFreq == "None")
             return 1;
-        else if (financialNotificationFreq == "Monthly")
+        else if (financialNotificationFreq == "Weekly")
             return 2;
+        else if (financialNotificationFreq == "Monthly")
+            return 3;
         else return 0;
     }
 

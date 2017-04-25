@@ -69,7 +69,7 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.Fina
             holder.getButtonUpdate().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    FinancialActivity.editMode = true;
+                    FinancialActivity.financialEditMode = true;
                     FinancialActivity.financialPosition = position;
                     Intent intent = new Intent(context , FinancialActivity.class);
                     notifyDataSetChanged();

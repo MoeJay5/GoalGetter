@@ -25,9 +25,9 @@ public class FinancialActivity extends AppCompatActivity {
     private double financialGoal = 0;
     private double financialCurrentGoal = 0;
 
-    public static Boolean editMode = false;
+    public static Boolean financialEditMode = false;
     public static int financialPosition = 0;
-    String financialNotifArray[] = {"Daily","Weekly","Monthly"};// Array of choices
+    String financialNotifArray[] = {"None","Daily","Weekly","Monthly"};// Array of choices
 
 
     @Override
@@ -45,7 +45,7 @@ public class FinancialActivity extends AppCompatActivity {
 
         final ImageButton addGoalFinancialBtn = (ImageButton) findViewById(R.id.addGoalFinancialButton);
 
-        if(editMode == true) { //Sets text and spinner to the what is being edited.
+        if(financialEditMode == true) { //Sets text and spinner to the what is being edited.
             financialUserText.setText(financialList.get(financialPosition).getFinancialGoal());
             financialCurrentUserText.setText(financialList.get(financialPosition).getFinancialCurrentGoal());
             financialSpinner.setSelection(financialList.get(financialPosition).getFinancialNotifPos());
@@ -55,7 +55,7 @@ public class FinancialActivity extends AppCompatActivity {
         financialUserText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if (editMode && financialUserText.getText().toString().length() > 0)
+                if (financialEditMode && financialUserText.getText().toString().length() > 0)
                     financialGoal = Double.parseDouble(financialUserText.getText().toString());
                 else
                     financialGoal = 0;
@@ -84,8 +84,7 @@ public class FinancialActivity extends AppCompatActivity {
         financialCurrentUserText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                System.out.println(financialUserText.getText().toString());
-                if (editMode && financialCurrentUserText.getText().toString().length() > 0)
+                if (financialEditMode && financialCurrentUserText.getText().toString().length() > 0)
                     financialCurrentGoal = Double.parseDouble(financialCurrentUserText.getText().toString());
                 else
                     financialCurrentGoal = 0;
@@ -97,7 +96,6 @@ public class FinancialActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                System.out.println(financialCurrentUserText.getText().toString());
                 if(financialCurrentUserText.getText().toString().length() > 0)
                     financialCurrentGoal = Double.parseDouble(financialCurrentUserText.getText().toString());
                 else
@@ -116,7 +114,7 @@ public class FinancialActivity extends AppCompatActivity {
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         FinancialEvent financialEventObj = new FinancialEvent(financialUserText.getText().toString(),financialCurrentUserText.getText().toString(), financialSpinner.getSelectedItem().toString());
-                        if(editMode == false) {
+                        if(financialEditMode == false) {
                             financialList.add(financialEventObj);
                             //financialEventList.add(financialEventObj); //Not Needed?
                             //MainActivity.setEvents(financialEventList); //Not Needed?
@@ -125,7 +123,7 @@ public class FinancialActivity extends AppCompatActivity {
                                     "Financial Goal created", Toast.LENGTH_LONG).show();
                         }
                         else {
-                            editMode = false;
+                            financialEditMode = false;
                             financialList.set(financialPosition, financialEventObj);
                             //MainActivity.setEvents(financialEventList); //Not Needed?
                             Toast.makeText(getApplicationContext(),

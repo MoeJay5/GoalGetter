@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ///ArrayList<String> goalArrayList;
     private boolean state;
     ImageButton addGoalBtn;
     Button regularBtn;
@@ -22,19 +21,19 @@ public class MainActivity extends AppCompatActivity {
     Button financialBtn;
     RecyclerView regularRecyclerView;
     RecyclerView financialRecyclerView;
+    RecyclerView eventRecyclerView;
     public static TextView regularTitle;
     public static TextView financialTitle;
+    public static TextView eventTitle;
     public static ArrayList<RegularEvent> regularList = new ArrayList<>();
     public static ArrayList<FinancialEvent> financialList = new ArrayList<>();
+    public static ArrayList<EventEvent> eventList = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Get the reference of ListViewAnimals
-        //ListView goalListView = (ListView)findViewById(R.id.goalList);
 
         state = false;
         addGoalBtn = (ImageButton) findViewById(R.id.addGoalButton);
@@ -53,14 +52,20 @@ public class MainActivity extends AppCompatActivity {
         FinancialAdapter financialAdapter = new FinancialAdapter(this,financialList);
         financialRecyclerView.setAdapter(financialAdapter);
 
+        eventTitle = (TextView)  findViewById(R.id.eventText);
         eventBtn = (Button) findViewById(R.id.eventButton);
+        eventRecyclerView = (RecyclerView) findViewById(R.id.eventGoalList);
+        eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        EventAdapter eventAdapter = new EventAdapter(this,eventList);
+        eventRecyclerView.setAdapter(eventAdapter);
 
-        //mainRecyclerView.setAdapter(new Adapter(this,RegularEventActivity.regularEventList.get(0).getRegularGoal()));
 
         if (regularList.size() > 0)
             regularTitle.setVisibility(View.VISIBLE);
         if (financialList.size() > 0)
             financialTitle.setVisibility(View.VISIBLE);
+        if (eventList.size() > 0)
+            eventTitle.setVisibility(View.VISIBLE);
 
         addGoalBtn.setOnClickListener(
                 new Button.OnClickListener() {
@@ -97,10 +102,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        eventBtn.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(), EventActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
     }
-
-//    public static ArrayList<RegularEvent> setEvents(ArrayList<RegularEvent> list){ //Not Needed?
-//        list  = regularList;
-//        return list;
-//    }
 }

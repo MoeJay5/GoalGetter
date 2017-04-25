@@ -22,10 +22,12 @@ public class RegularEvent {
     }
 
     public int getRegularNotifPos() {
-        if (regularNotificationFreq == "Weekly")
+        if (regularNotificationFreq == "None")
             return 1;
-        else if (regularNotificationFreq == "Monthly")
+        else if (regularNotificationFreq == "Weekly")
             return 2;
+        else if (regularNotificationFreq == "Monthly")
+            return 3;
         else return 0;
     }
 

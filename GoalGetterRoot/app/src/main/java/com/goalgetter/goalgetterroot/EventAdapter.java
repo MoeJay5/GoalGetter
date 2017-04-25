@@ -16,50 +16,57 @@ import java.util.ArrayList;
  * Created by moeja on 4/17/2017.
  */
 
-public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularHolder> {
+public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder> {
 
+    private String eventName;
+    private String eventGoal;
+    private int daysRemaining;
     Context context;
-    ArrayList<RegularEvent> regularevent = new ArrayList<>();
+    ArrayList<EventEvent> eventevent = new ArrayList<>();
 
-    public RegularAdapter(Context context, ArrayList<RegularEvent> list) {
+    public EventAdapter(Context context, ArrayList<EventEvent> list) {
         this.context = context;
-        regularevent = list;
+        eventevent = list;
     }
 
     @Override
-    public RegularAdapter.RegularHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new RegularAdapter.RegularHolder(context, LayoutInflater.from(parent.getContext()).inflate(R.layout.regular_row, parent, false));
+    public EventAdapter.EventHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new EventAdapter.EventHolder(context, LayoutInflater.from(parent.getContext()).inflate(R.layout.event_row, parent, false));
     }
 //    }
 //    @Override
 //    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 //        LayoutInflater inflater = LayoutInflater.from(context);
-////        View row = inflater.inflate(R.layout.regular_row, parent, false);
+////        View row = inflater.inflate(R.layout.event_row, parent, false);
 ////        Item item = new Item(row);
 ////        return item;
 //    }
 
         @Override
-        public void onBindViewHolder(RegularAdapter.RegularHolder holder, final int position){
-            RegularEvent regularAdapt = regularevent.get(position);
+        public void onBindViewHolder(EventAdapter.EventHolder holder, final int position){
+            EventEvent eventAdapt = eventevent.get(position);
 
-            holder.getTextView().setText(regularAdapt.getRegularGoal());
+            eventName = eventAdapt.getEventName();
+            eventGoal = eventAdapt.getEventGoal();
+            daysRemaining = eventAdapt.getEventDays();//
+
+            holder.getTextView().setText(eventGoal + " for " + eventName + " with " + daysRemaining + " Days left.");
             holder.getTextView().setMovementMethod(new ScrollingMovementMethod());
             holder.getButtonDone().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    regularevent.remove(position);
-                    if (MainActivity.regularList.size() <= 0)
-                        MainActivity.regularTitle.setVisibility(View.INVISIBLE);
+                    eventevent.remove(position);
+                    if (MainActivity.eventList.size() <= 0)
+                        MainActivity.eventTitle.setVisibility(View.INVISIBLE);
                     notifyDataSetChanged();
                 }
             });
             holder.getButtonUpdate().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    RegularActivity.regularEditMode = true;
-                    RegularActivity.regularPosition = position;
-                    Intent intent = new Intent(context , RegularActivity.class);
+                    EventActivity.eventEditMode = true;
+                    EventActivity.eventPosition = position;
+                    Intent intent = new Intent(context , EventActivity.class);
                     notifyDataSetChanged();
                     context.startActivity(intent);
                 }
@@ -68,26 +75,26 @@ public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularH
 
         @Override
         public int getItemCount () {
-            return regularevent.size();
+            return eventevent.size();
         }
 //    public class Item extends RecyclerView.ViewHolder {
 //        TextView textView;
 //        public Item(View itemView) {
 //            super(itemView);
-//            textView = (TextView) itemView.findViewById(R.id.textViewRegularRow);
+//            textView = (TextView) itemView.findViewById(R.id.textViewEventRow);
 //        }
 //    }
-        public class RegularHolder extends RecyclerView.ViewHolder {
+        public class EventHolder extends RecyclerView.ViewHolder {
 
             private TextView textView;
             private Button buttonEdit;
             private Button buttonDone;
 
-          public RegularHolder(Context context, View itemView){
+          public EventHolder(Context context, View itemView){
                 super(itemView);
-                textView = (TextView) itemView.findViewById(R.id.tv_regular);
-                buttonDone = (Button) itemView.findViewById(R.id.regularDone);
-                buttonEdit = (Button) itemView.findViewById(R.id.regularEdit);
+                textView = (TextView) itemView.findViewById(R.id.tv_event);
+                buttonDone = (Button) itemView.findViewById(R.id.eventDone);
+                buttonEdit = (Button) itemView.findViewById(R.id.eventEdit);
             }
 
             public TextView getTextView() {
@@ -101,5 +108,5 @@ public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularH
             public Button getButtonUpdate() {
                 return buttonEdit;
             }
-}
+    }
 }

@@ -20,9 +20,9 @@ public class RegularActivity extends AppCompatActivity {
     //ArrayList<RegularEvent> regularEventList = new ArrayList<>();
     EditText regularUserText;
     Spinner regularSpinner;
-    public static Boolean editMode = false;
+    public static Boolean regularEditMode = false;
     public static int regularPosition = 0;
-    String regularNotifArray[] = {"Daily","Weekly","Monthly"};// Array of choices
+    String regularNotifArray[] = {"None","Daily","Weekly","Monthly"};// Array of choices
 
 
     @Override
@@ -39,7 +39,7 @@ public class RegularActivity extends AppCompatActivity {
 
         final ImageButton addGoalRegularBtn = (ImageButton) findViewById(R.id.addGoalRegularButton);
 
-        if(editMode == true) { //Sets text and spinner to the what is being edited.
+        if(regularEditMode == true) { //Sets text and spinner to the what is being edited.
             regularUserText.setText(regularList.get(regularPosition).getRegularGoal());
             regularSpinner.setSelection(regularList.get(regularPosition).getRegularNotifPos());
         }
@@ -68,7 +68,7 @@ public class RegularActivity extends AppCompatActivity {
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         RegularEvent regularEventObj = new RegularEvent(regularUserText.getText().toString(), regularSpinner.getSelectedItem().toString());
-                        if(editMode == false) {
+                        if(regularEditMode == false) {
                             regularList.add(regularEventObj);
                             //regularEventList.add(regularEventObj); //Not Needed?
                             //MainActivity.setEvents(regularEventList); //Not Needed?
@@ -77,7 +77,7 @@ public class RegularActivity extends AppCompatActivity {
                                     "Regular Goal created", Toast.LENGTH_LONG).show();
                         }
                         else {
-                            editMode = false;
+                            regularEditMode = false;
                             regularList.set(regularPosition, regularEventObj);
                             //MainActivity.setEvents(regularEventList); //Not Needed?
                             Toast.makeText(getApplicationContext(),
