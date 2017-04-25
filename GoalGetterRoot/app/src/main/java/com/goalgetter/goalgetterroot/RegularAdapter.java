@@ -12,43 +12,29 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by moeja on 4/17/2017.
- */
+class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularHolder> {
 
-public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularHolder> {
+    private Context context;
+    private ArrayList<RegularEvent> regularEvents = new ArrayList<>();
 
-    Context context;
-    ArrayList<RegularEvent> regularevent = new ArrayList<>();
-
-    public RegularAdapter(Context context, ArrayList<RegularEvent> list) {
+    RegularAdapter(Context context, ArrayList<RegularEvent> list) {
         this.context = context;
-        regularevent = list;
+        regularEvents = list;
     }
 
     @Override
-    public RegularAdapter.RegularHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new RegularAdapter.RegularHolder(context, LayoutInflater.from(parent.getContext()).inflate(R.layout.regular_row, parent, false));
-    }
-//    }
-//    @Override
-//    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        LayoutInflater inflater = LayoutInflater.from(context);
-////        View row = inflater.inflate(R.layout.regular_row, parent, false);
-////        Item item = new Item(row);
-////        return item;
-//    }
+    public RegularAdapter.RegularHolder onCreateViewHolder(ViewGroup parent, int viewType) { return new RegularAdapter.RegularHolder(context, LayoutInflater.from(parent.getContext()).inflate(R.layout.regular_row, parent, false)); }
 
         @Override
         public void onBindViewHolder(RegularAdapter.RegularHolder holder, final int position){
-            RegularEvent regularAdapt = regularevent.get(position);
+            RegularEvent regularAdapt = regularEvents.get(position);
 
             holder.getTextView().setText(regularAdapt.getRegularGoal());
             holder.getTextView().setMovementMethod(new ScrollingMovementMethod());
             holder.getButtonDone().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    regularevent.remove(position);
+                    regularEvents.remove(position);
                     if (MainActivity.regularList.size() <= 0)
                         MainActivity.regularTitle.setVisibility(View.INVISIBLE);
                     notifyDataSetChanged();
@@ -68,38 +54,32 @@ public class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularH
 
         @Override
         public int getItemCount () {
-            return regularevent.size();
+            return regularEvents.size();
         }
-//    public class Item extends RecyclerView.ViewHolder {
-//        TextView textView;
-//        public Item(View itemView) {
-//            super(itemView);
-//            textView = (TextView) itemView.findViewById(R.id.textViewRegularRow);
-//        }
-//    }
-        public class RegularHolder extends RecyclerView.ViewHolder {
+
+        class RegularHolder extends RecyclerView.ViewHolder {
 
             private TextView textView;
             private Button buttonEdit;
             private Button buttonDone;
 
-          public RegularHolder(Context context, View itemView){
+            RegularHolder(Context context, View itemView){
                 super(itemView);
                 textView = (TextView) itemView.findViewById(R.id.tv_regular);
                 buttonDone = (Button) itemView.findViewById(R.id.regularDone);
                 buttonEdit = (Button) itemView.findViewById(R.id.regularEdit);
             }
 
-            public TextView getTextView() {
+            TextView getTextView() {
                 return textView;
             }
 
-            public Button getButtonDone() {
+            Button getButtonDone() {
                 return buttonDone;
             }
 
-            public Button getButtonUpdate() {
+            Button getButtonUpdate() {
                 return buttonEdit;
             }
-}
+    }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.goalgitter.goalgitterroot.RegularEventActivity">
+    tools:context="com.goalgetter.goalgetterroot.RegularEvent">
 
     <ImageButton
         android:id="@+id/addProfileSelect"
@@ -40,8 +40,6 @@
         android:ems="10"
         android:hint="Name Here"
         android:inputType="text|textAutoCorrect"
-        android:singleLine="false"
-        android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
         android:textSize="16sp"
         app:layout_constraintHorizontal_bias="0.0"

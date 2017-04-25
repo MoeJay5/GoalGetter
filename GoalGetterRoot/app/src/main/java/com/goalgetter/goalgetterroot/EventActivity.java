@@ -13,9 +13,6 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-
-import static com.goalgetter.goalgetterroot.MainActivity.eventList;
-
 public class EventActivity extends AppCompatActivity {
 
     private EditText eventName;
@@ -24,11 +21,9 @@ public class EventActivity extends AppCompatActivity {
     private Spinner eventSpinner;
 
     private int eventUserVal = 0;
-
+    private String eventNotifArray[] = {"None","Daily"};// Array of choices
     public static Boolean eventEditMode = false;
     public static int eventPosition = 0;
-    private String eventNotifArray[] = {"None","Daily"};// Array of choices
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +41,11 @@ public class EventActivity extends AppCompatActivity {
 
         final ImageButton addGoalEventBtn = (ImageButton) findViewById(R.id.addGoalEventButton);
 
-        if(eventEditMode == true) { //Sets text and spinner to the what is being edited.
-            eventName.setText(eventList.get(eventPosition).getEventName());
-            eventGoal.setText(eventList.get(eventPosition).getEventGoal());
-            userDate.setText(eventList.get(eventPosition).getEventDaysString());
-            eventSpinner.setSelection(eventList.get(eventPosition).getEventNotifPos());
+        if(eventEditMode) { //Sets text and spinner to the what is being edited.
+            eventName.setText(MainActivity.eventList.get(eventPosition).getEventName());
+            eventGoal.setText(MainActivity.eventList.get(eventPosition).getEventGoal());
+            userDate.setText(MainActivity.eventList.get(eventPosition).getEventDaysString());
+            eventSpinner.setSelection(MainActivity.eventList.get(eventPosition).getEventNotifPos());
         }
         else addGoalEventBtn.setVisibility(View.INVISIBLE);// Set Invisible if user not editing
 
@@ -125,15 +120,15 @@ public class EventActivity extends AppCompatActivity {
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         EventEvent eventEventObj = new EventEvent(eventName.getText().toString(), eventGoal.getText().toString(), Integer.parseInt(userDate.getText().toString()), eventSpinner.getSelectedItem().toString());
-                        if(eventEditMode == false) {
-                            eventList.add(eventEventObj);
+                        if(!eventEditMode) {
+                            MainActivity.eventList.add(eventEventObj);
 
                             Toast.makeText(getApplicationContext(),
                                     "Event Goal created", Toast.LENGTH_LONG).show();
                         }
                         else {
                             eventEditMode = false;
-                            eventList.set(eventPosition, eventEventObj);
+                            MainActivity.eventList.set(eventPosition, eventEventObj);
                             Toast.makeText(getApplicationContext(),
                                     "Event Goal edited", Toast.LENGTH_LONG).show();
                         }

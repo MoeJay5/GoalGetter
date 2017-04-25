@@ -1,41 +1,34 @@
 package com.goalgetter.goalgetterroot;
 
-/**
- * Created by moeja on 4/8/2017.
- */
 
-public class FinancialEvent {
-    String financialGoal;
-    String financialCurrentGoal;
-    String financialNotificationFreq;
+class FinancialEvent {
+    private String financialGoal;
+    private String financialCurrentGoal;
+    private String financialNotificationFreq;
 
-    public FinancialEvent(String financialGoal,String financialCurrentGoal, String financialNotificationFreq){
+    FinancialEvent(String financialGoal,String financialCurrentGoal, String financialNotificationFreq){
         this.financialGoal = financialGoal;
         this.financialCurrentGoal = financialCurrentGoal;
         this.financialNotificationFreq = financialNotificationFreq;
     }
 
-    public String getFinancialGoal(){
+    String getFinancialGoal(){
         return financialGoal;
     }
 
-    public String getFinancialCurrentGoal() {
+    String getFinancialCurrentGoal() {
         return financialCurrentGoal;
     }
 
-    public String getFinancialNotifFreq(){
-        return financialNotificationFreq;
-    }
+    //String getFinancialNotifFreq(){ return financialNotificationFreq; }
 
-    public int getFinancialNotifPos() {
-        if (financialNotificationFreq == "None")
+    int getFinancialNotifPos() {
+        if (financialNotificationFreq.equals("None"))
             return 1;
-        else if (financialNotificationFreq == "Weekly")
+        else if (financialNotificationFreq.equals("Weekly"))
             return 2;
-        else if (financialNotificationFreq == "Monthly")
+        else if (financialNotificationFreq.equals("Monthly"))
             return 3;
         else return 0;
     }
-
-
 }

@@ -15,20 +15,17 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private boolean state;
-    ImageButton addGoalBtn;
-    Button regularBtn;
-    Button eventBtn;
-    Button financialBtn;
-    RecyclerView regularRecyclerView;
-    RecyclerView financialRecyclerView;
-    RecyclerView eventRecyclerView;
+    private ImageButton addGoalBtn;
+    private Button regularBtn;
+    private Button eventBtn;
+    private Button financialBtn;
     public static TextView regularTitle;
     public static TextView financialTitle;
     public static TextView eventTitle;
+
     public static ArrayList<RegularEvent> regularList = new ArrayList<>();
     public static ArrayList<FinancialEvent> financialList = new ArrayList<>();
     public static ArrayList<EventEvent> eventList = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,25 +37,24 @@ public class MainActivity extends AppCompatActivity {
 
         regularTitle = (TextView)  findViewById(R.id.regularText);
         regularBtn = (Button) findViewById(R.id.regularButton);
-        regularRecyclerView = (RecyclerView) findViewById(R.id.regularGoalList);
+        RecyclerView regularRecyclerView = (RecyclerView) findViewById(R.id.regularGoalList);
         regularRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         RegularAdapter regularAdapter = new RegularAdapter(this,regularList);
         regularRecyclerView.setAdapter(regularAdapter);
 
         financialTitle = (TextView)  findViewById(R.id.financialText);
         financialBtn = (Button) findViewById(R.id.financialButton);
-        financialRecyclerView = (RecyclerView) findViewById(R.id.financialGoalList);
+        RecyclerView financialRecyclerView = (RecyclerView) findViewById(R.id.financialGoalList);
         financialRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         FinancialAdapter financialAdapter = new FinancialAdapter(this,financialList);
         financialRecyclerView.setAdapter(financialAdapter);
 
         eventTitle = (TextView)  findViewById(R.id.eventText);
         eventBtn = (Button) findViewById(R.id.eventButton);
-        eventRecyclerView = (RecyclerView) findViewById(R.id.eventGoalList);
+        RecyclerView eventRecyclerView = (RecyclerView) findViewById(R.id.eventGoalList);
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         EventAdapter eventAdapter = new EventAdapter(this,eventList);
         eventRecyclerView.setAdapter(eventAdapter);
-
 
         if (regularList.size() > 0)
             regularTitle.setVisibility(View.VISIBLE);

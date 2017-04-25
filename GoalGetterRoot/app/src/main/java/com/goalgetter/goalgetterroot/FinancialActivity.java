@@ -13,22 +13,17 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import static com.goalgetter.goalgetterroot.MainActivity.financialList;
-
 public class FinancialActivity extends AppCompatActivity {
 
-    //ArrayList<FinancialEvent> financialEventList = new ArrayList<>();
-    EditText financialUserText;
-    EditText financialCurrentUserText;
-    Spinner financialSpinner;
+    private EditText financialUserText;
+    private EditText financialCurrentUserText;
+    private Spinner financialSpinner;
 
+    private String financialNotifArray[] = {"None","Daily","Weekly","Monthly"};// Array of choices
     private double financialGoal = 0;
     private double financialCurrentGoal = 0;
-
     public static Boolean financialEditMode = false;
     public static int financialPosition = 0;
-    String financialNotifArray[] = {"None","Daily","Weekly","Monthly"};// Array of choices
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +40,10 @@ public class FinancialActivity extends AppCompatActivity {
 
         final ImageButton addGoalFinancialBtn = (ImageButton) findViewById(R.id.addGoalFinancialButton);
 
-        if(financialEditMode == true) { //Sets text and spinner to the what is being edited.
-            financialUserText.setText(financialList.get(financialPosition).getFinancialGoal());
-            financialCurrentUserText.setText(financialList.get(financialPosition).getFinancialCurrentGoal());
-            financialSpinner.setSelection(financialList.get(financialPosition).getFinancialNotifPos());
+        if(financialEditMode) { //Sets text and spinner to the what is being edited.
+            financialUserText.setText(MainActivity.financialList.get(financialPosition).getFinancialGoal());
+            financialCurrentUserText.setText(MainActivity.financialList.get(financialPosition).getFinancialCurrentGoal());
+            financialSpinner.setSelection(MainActivity.financialList.get(financialPosition).getFinancialNotifPos());
         }
         else addGoalFinancialBtn.setVisibility(View.INVISIBLE);// Set Invisible if user not editing
 
@@ -114,18 +109,15 @@ public class FinancialActivity extends AppCompatActivity {
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         FinancialEvent financialEventObj = new FinancialEvent(financialUserText.getText().toString(),financialCurrentUserText.getText().toString(), financialSpinner.getSelectedItem().toString());
-                        if(financialEditMode == false) {
-                            financialList.add(financialEventObj);
-                            //financialEventList.add(financialEventObj); //Not Needed?
-                            //MainActivity.setEvents(financialEventList); //Not Needed?
+                        if(!financialEditMode) {
+                            MainActivity.financialList.add(financialEventObj);
 
                             Toast.makeText(getApplicationContext(),
                                     "Financial Goal created", Toast.LENGTH_LONG).show();
                         }
                         else {
                             financialEditMode = false;
-                            financialList.set(financialPosition, financialEventObj);
-                            //MainActivity.setEvents(financialEventList); //Not Needed?
+                            MainActivity.financialList.set(financialPosition, financialEventObj);
                             Toast.makeText(getApplicationContext(),
                                     "Financial Goal edited", Toast.LENGTH_LONG).show();
                         }

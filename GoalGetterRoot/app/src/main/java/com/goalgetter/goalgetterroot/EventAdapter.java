@@ -12,101 +12,70 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by moeja on 4/17/2017.
- */
+class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder> {
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder> {
+    private Context context;
+    private ArrayList<EventEvent> eventEvents = new ArrayList<>();
 
-    private String eventName;
-    private String eventGoal;
-    private int daysRemaining;
-    Context context;
-    ArrayList<EventEvent> eventevent = new ArrayList<>();
-
-    public EventAdapter(Context context, ArrayList<EventEvent> list) {
+    EventAdapter(Context context, ArrayList<EventEvent> list) {
         this.context = context;
-        eventevent = list;
+        eventEvents = list;
     }
 
     @Override
-    public EventAdapter.EventHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new EventAdapter.EventHolder(context, LayoutInflater.from(parent.getContext()).inflate(R.layout.event_row, parent, false));
+    public EventAdapter.EventHolder onCreateViewHolder(ViewGroup parent, int viewType) { return new EventAdapter.EventHolder(context, LayoutInflater.from(parent.getContext()).inflate(R.layout.event_row, parent, false));}
+
+    @Override
+    public void onBindViewHolder(EventAdapter.EventHolder holder, final int position){
+        EventEvent eventAdapt = eventEvents.get(position);
+
+        String eventName = eventAdapt.getEventName();
+        String eventGoal = eventAdapt.getEventGoal();
+        int daysRemaining = eventAdapt.getEventDays();
+
+        holder.getTextView().setText(eventGoal + " for " + eventName + " with " + daysRemaining + " Days left.");
+        holder.getTextView().setMovementMethod(new ScrollingMovementMethod());
+        holder.getButtonDone().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventEvents.remove(position);
+                if (MainActivity.eventList.size() <= 0)
+                    MainActivity.eventTitle.setVisibility(View.INVISIBLE);
+                notifyDataSetChanged();
+            }
+        });
+        holder.getButtonUpdate().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventActivity.eventEditMode = true;
+                EventActivity.eventPosition = position;
+                Intent intent = new Intent(context , EventActivity.class);
+                notifyDataSetChanged();
+                context.startActivity(intent);
+            }
+        });
     }
-//    }
-//    @Override
-//    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        LayoutInflater inflater = LayoutInflater.from(context);
-////        View row = inflater.inflate(R.layout.event_row, parent, false);
-////        Item item = new Item(row);
-////        return item;
-//    }
 
-        @Override
-        public void onBindViewHolder(EventAdapter.EventHolder holder, final int position){
-            EventEvent eventAdapt = eventevent.get(position);
+    @Override
+    public int getItemCount () { return eventEvents.size(); }
 
-            eventName = eventAdapt.getEventName();
-            eventGoal = eventAdapt.getEventGoal();
-            daysRemaining = eventAdapt.getEventDays();//
+    class EventHolder extends RecyclerView.ViewHolder {
 
-            holder.getTextView().setText(eventGoal + " for " + eventName + " with " + daysRemaining + " Days left.");
-            holder.getTextView().setMovementMethod(new ScrollingMovementMethod());
-            holder.getButtonDone().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    eventevent.remove(position);
-                    if (MainActivity.eventList.size() <= 0)
-                        MainActivity.eventTitle.setVisibility(View.INVISIBLE);
-                    notifyDataSetChanged();
-                }
-            });
-            holder.getButtonUpdate().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    EventActivity.eventEditMode = true;
-                    EventActivity.eventPosition = position;
-                    Intent intent = new Intent(context , EventActivity.class);
-                    notifyDataSetChanged();
-                    context.startActivity(intent);
-                }
-            });
+        private TextView textView;
+        private Button buttonEdit;
+        private Button buttonDone;
+
+        EventHolder(Context context, View itemView){
+            super(itemView);
+            textView = (TextView) itemView.findViewById(R.id.tv_event);
+            buttonDone = (Button) itemView.findViewById(R.id.eventDone);
+            buttonEdit = (Button) itemView.findViewById(R.id.eventEdit);
         }
 
-        @Override
-        public int getItemCount () {
-            return eventevent.size();
-        }
-//    public class Item extends RecyclerView.ViewHolder {
-//        TextView textView;
-//        public Item(View itemView) {
-//            super(itemView);
-//            textView = (TextView) itemView.findViewById(R.id.textViewEventRow);
-//        }
-//    }
-        public class EventHolder extends RecyclerView.ViewHolder {
+        TextView getTextView() { return textView; }
 
-            private TextView textView;
-            private Button buttonEdit;
-            private Button buttonDone;
+        Button getButtonDone() { return buttonDone; }
 
-          public EventHolder(Context context, View itemView){
-                super(itemView);
-                textView = (TextView) itemView.findViewById(R.id.tv_event);
-                buttonDone = (Button) itemView.findViewById(R.id.eventDone);
-                buttonEdit = (Button) itemView.findViewById(R.id.eventEdit);
-            }
-
-            public TextView getTextView() {
-                return textView;
-            }
-
-            public Button getButtonDone() {
-                return buttonDone;
-            }
-
-            public Button getButtonUpdate() {
-                return buttonEdit;
-            }
+        Button getButtonUpdate() { return buttonEdit; }
     }
 }

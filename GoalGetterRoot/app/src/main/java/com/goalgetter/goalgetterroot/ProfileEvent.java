@@ -10,16 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-/**
- * Created by moeja on 4/22/2017.
- */
-
 public class ProfileEvent extends AppCompatActivity {
-    //profileUserText.setText(profile1.getText());
-    //profile1.setText(profileUserText.getText());
 
     public static EditText profileUserText;
-    ImageButton addProfileBtn;
+    private ImageButton addProfileBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +54,5 @@ public class ProfileEvent extends AppCompatActivity {
                     }
                 }
         );
-
-
     }
 }

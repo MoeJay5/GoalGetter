@@ -13,17 +13,14 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import static com.goalgetter.goalgetterroot.MainActivity.regularList;
-
 public class RegularActivity extends AppCompatActivity {
 
-    //ArrayList<RegularEvent> regularEventList = new ArrayList<>();
-    EditText regularUserText;
-    Spinner regularSpinner;
-    public static Boolean regularEditMode = false;
-    public static int regularPosition = 0;
-    String regularNotifArray[] = {"None","Daily","Weekly","Monthly"};// Array of choices
+    private EditText regularUserText;
+    private Spinner regularSpinner;
 
+    public static Boolean regularEditMode = false;
+    private String regularNotifArray[] = {"None","Daily","Weekly","Monthly"};// Array of choices
+    public static int regularPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +36,9 @@ public class RegularActivity extends AppCompatActivity {
 
         final ImageButton addGoalRegularBtn = (ImageButton) findViewById(R.id.addGoalRegularButton);
 
-        if(regularEditMode == true) { //Sets text and spinner to the what is being edited.
-            regularUserText.setText(regularList.get(regularPosition).getRegularGoal());
-            regularSpinner.setSelection(regularList.get(regularPosition).getRegularNotifPos());
+        if(regularEditMode) { //Sets text and spinner to the what is being edited.
+            regularUserText.setText(MainActivity.regularList.get(regularPosition).getRegularGoal());
+            regularSpinner.setSelection(MainActivity.regularList.get(regularPosition).getRegularNotifPos());
         }
         else addGoalRegularBtn.setVisibility(View.INVISIBLE);// Set Invisible if user not editing
 
@@ -68,18 +65,15 @@ public class RegularActivity extends AppCompatActivity {
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         RegularEvent regularEventObj = new RegularEvent(regularUserText.getText().toString(), regularSpinner.getSelectedItem().toString());
-                        if(regularEditMode == false) {
-                            regularList.add(regularEventObj);
-                            //regularEventList.add(regularEventObj); //Not Needed?
-                            //MainActivity.setEvents(regularEventList); //Not Needed?
+                        if(!regularEditMode) {
+                            MainActivity.regularList.add(regularEventObj);
 
                             Toast.makeText(getApplicationContext(),
                                     "Regular Goal created", Toast.LENGTH_LONG).show();
                         }
                         else {
                             regularEditMode = false;
-                            regularList.set(regularPosition, regularEventObj);
-                            //MainActivity.setEvents(regularEventList); //Not Needed?
+                            MainActivity.regularList.set(regularPosition, regularEventObj);
                             Toast.makeText(getApplicationContext(),
                                     "Regular Goal edited", Toast.LENGTH_LONG).show();
                         }

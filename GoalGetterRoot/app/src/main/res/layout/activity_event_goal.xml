@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.goalgitter.goalgitterroot.RegularEventActivity">
+    tools:context="com.goalgetter.goalgetterroot.RegularEvent">
 
     <TextView
         android:id="@+id/enterEventNotif"
@@ -55,8 +55,6 @@
         android:ems="10"
         android:hint="Enter event name here"
         android:inputType="text|textCapWords|textAutoCorrect"
-        android:singleLine="false"
-        android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/enterEventGoal"
@@ -88,8 +86,6 @@
         android:ems="10"
         android:hint="Enter event goal here"
         android:inputType="text|textCapSentences|textAutoCorrect"
-        android:singleLine="false"
-        android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/enterEventCurrentGoal"
@@ -106,8 +102,6 @@
         android:ems="10"
         android:hint="Enter amount of days until event"
         android:inputType="number"
-        android:singleLine="false"
-        android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/enterEventCurrentGoal"
