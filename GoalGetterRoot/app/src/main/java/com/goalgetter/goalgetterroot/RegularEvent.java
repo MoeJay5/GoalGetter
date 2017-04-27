@@ -16,7 +16,7 @@ class RegularEvent {
     //public String getRegularNotifFreq(){ return regularNotificationFreq;}
 
     int getRegularNotifPos() {
-        if (regularNotificationFreq.equals("None"))
+        if (regularNotificationFreq.equals("Daily"))
             return 1;
         else if (regularNotificationFreq.equals("Weekly"))
             return 2;

@@ -23,7 +23,7 @@ class FinancialEvent {
     //String getFinancialNotifFreq(){ return financialNotificationFreq; }
 
     int getFinancialNotifPos() {
-        if (financialNotificationFreq.equals("None"))
+        if (financialNotificationFreq.equals("Daily"))
             return 1;
         else if (financialNotificationFreq.equals("Weekly"))
             return 2;
