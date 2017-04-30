@@ -1,6 +1,6 @@
 package com.goalgetter.goalgetterroot;
 
-class RegularEvent {
+class RegularEvent { //Regular Goal Objects
     private String regularGoal;
     private String regularNotificationFreq;
 

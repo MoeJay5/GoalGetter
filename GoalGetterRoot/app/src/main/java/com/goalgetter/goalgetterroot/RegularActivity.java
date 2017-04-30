@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class RegularActivity extends AppCompatActivity {
+public class RegularActivity extends AppCompatActivity { //Logic for Regular Goal
 
     private EditText regularUserText;
     private Spinner regularSpinner;

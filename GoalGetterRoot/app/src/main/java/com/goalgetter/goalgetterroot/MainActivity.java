@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity { //Logic for main menu
 
     private boolean state;
     private ImageButton addGoalBtn;

@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-public class ProfileEvent extends AppCompatActivity {
+public class ProfileEvent extends AppCompatActivity { //Profile Objects
 
     public static EditText profileUserText;
     private ImageButton addProfileBtn;

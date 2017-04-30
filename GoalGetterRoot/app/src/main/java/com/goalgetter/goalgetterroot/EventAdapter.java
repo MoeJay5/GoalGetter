@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder> {
+class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder> { //Handles Event Adapter
 
     private Context context;
     private ArrayList<EventEvent> eventEvents = new ArrayList<>();

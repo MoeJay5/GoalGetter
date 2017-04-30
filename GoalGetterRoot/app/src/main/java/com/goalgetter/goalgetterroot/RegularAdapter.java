@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularHolder> {
+class RegularAdapter extends RecyclerView.Adapter<RegularAdapter.RegularHolder> { //Handles Regular Adapter
 
     private Context context;
     private ArrayList<RegularEvent> regularEvents = new ArrayList<>();

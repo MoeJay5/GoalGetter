@@ -1,6 +1,6 @@
 package com.goalgetter.goalgetterroot;
 
-class EventEvent {
+class EventEvent { //Event Goal Objects
     private String eventName;
     private String eventGoal;
     private int userDays;

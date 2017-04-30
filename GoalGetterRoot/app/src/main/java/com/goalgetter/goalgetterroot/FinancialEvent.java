@@ -1,7 +1,7 @@
 package com.goalgetter.goalgetterroot;
 
 
-class FinancialEvent {
+class FinancialEvent { //Financial Goal Objects
     private String financialGoal;
     private String financialCurrentGoal;
     private String financialNotificationFreq;

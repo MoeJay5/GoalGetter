@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.FinancialHolder> {
+class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.FinancialHolder> { //Handles Financial Adapter
 
     private Context context;
     private ArrayList<FinancialEvent> financialEvents = new ArrayList<>();

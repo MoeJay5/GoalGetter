@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class EventActivity extends AppCompatActivity {
+public class EventActivity extends AppCompatActivity { //Logic for Event Goal
 
     private EditText eventName;
     private EditText eventGoal;
@@ -21,7 +21,7 @@ public class EventActivity extends AppCompatActivity {
     private Spinner eventSpinner;
 
     private int eventUserVal = 0;
-    private String eventNotifArray[] = {"None","Daily"};// Array of choices
+    private String eventNotifArray[] = {"None","Daily"}; //Array of choices
     public static Boolean eventEditMode = false;
     public static int eventPosition = 0;
 
@@ -36,7 +36,7 @@ public class EventActivity extends AppCompatActivity {
         eventSpinner = (Spinner) findViewById(R.id.eventSpinner);// Selection of the spinner
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,eventNotifArray);
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //The drop down view
         eventSpinner.setAdapter(spinnerArrayAdapter);
 
         final ImageButton addGoalEventBtn = (ImageButton) findViewById(R.id.addGoalEventButton);
@@ -47,7 +47,7 @@ public class EventActivity extends AppCompatActivity {
             userDate.setText(MainActivity.eventList.get(eventPosition).getEventDaysString());
             eventSpinner.setSelection(MainActivity.eventList.get(eventPosition).getEventNotifPos());
         }
-        else addGoalEventBtn.setVisibility(View.INVISIBLE);// Set Invisible if user not editing
+        else addGoalEventBtn.setVisibility(View.INVISIBLE); //Set Invisible if user not editing
 
         eventName.addTextChangedListener(new TextWatcher() {
             @Override

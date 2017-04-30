@@ -13,7 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class FinancialActivity extends AppCompatActivity {
+public class FinancialActivity extends AppCompatActivity { //Logic for Financial Goal
 
     private EditText financialUserText;
     private EditText financialCurrentUserText;
